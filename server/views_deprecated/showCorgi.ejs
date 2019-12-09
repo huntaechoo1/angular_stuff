@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Corgi Dashboard</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<h1>LOOK AT THIS GOOD BOI</h1>
+	<div style="border: 2px solid black; display: inline-block; padding: 2%; margin-left: 1%">
+		<h3>Name: <%= corgi.name %></h3>
+		<h3>Age: <%= corgi.age %></h3>
+		<h3>Color: <%= corgi.color %></h3>
+		<h3>Good boy level? <%= corgi.goodboylevel %></h3>
+	</div>
+	<div style="margin-top: 1%; margin-left: 1%">
+	<a href="../corgis/edit/<%= corgi._id %>"><button class="btn btn-primary">Edit</button></a>
+	<a href="../corgis/delete/<%= corgi._id %>"><button class="btn btn-danger">Delete</button></a>
+	</div>
+</body>
+</html>

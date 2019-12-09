@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Corgi Dashboard</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<table class="table" style="display: inline-block; width:49%; border: 2px solid black">
+		<thead>
+		    <tr>
+		      <th scope="col">Name</th>
+		      <th scope="col">Age</th>
+		      <th scope="col">Color</th>
+		      <th scope="col">Good Boy Level</th>
+		    </tr>
+		</thead>
+		<tbody>
+	<% for(var corgi of corgis){ %>
+		<tr>
+		    <th scope="row"><a href='corgis/<%= corgi._id %>'><%= corgi.name %></a></th>
+		    <td><%= corgi.age %></td>
+		    <td><%= corgi.color %></td>
+		    <td><%= corgi.goodboylevel %></td>
+	    </tr>
+	<% } %>
+	  </tbody>
+	</table>
+
+	<form action="/create" method="post" class="form-group" style="width: 45%; border: 2px solid black; padding: 2%; margin-top:1%; display: inline-block;">
+		<h4>ADD A CORGI</h4>
+		<label for="name">Name</label>
+		<input type="text" name="name" class="form-control">
+		<label for="age">Age</label>
+		<input type="number" name="age" class="form-control">
+		<label for="color">Color</label>
+		<input type="text" name="color" class="form-control">
+		<label for="goodboylevel">Good Boy Level</label>
+		<input type="number" name="goodboylevel" class="form-control">
+		<input type="submit" name="submit" value="Submit" class="btn btn-danger">
+	</form>
+</body>
+</html>
