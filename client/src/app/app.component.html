@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
   <h1>Welcome to {{title}}</h1>
@@ -11,11 +13,17 @@
   <h4>{{overgrowthdata.pokemon.length}} pokemon have Overgrowth</h4> -->
   <h1>All Tasks</h1>
   <ul>
-    <li *ngFor = "let task of data.tasks">{{ task["title"]}}: {{task["description"]}}</li>
+	<li *ngFor = "let task of data.tasks">{{ task["title"]}}<button (click)="onButtonClickTask(task['_id'])"
+	  class="btn btn-secondary">See More</button>
+	</li>
   </ul>
-  <h1>The Third Task</h1>
+  <p *ngIf = "taskdata" >{{taskdata["task"]["title"]}}: {{taskdata["task"]["description"]}}</p>
+  <!-- <h1>The Third Task</h1>
   <ul>
-    <li>{{ data["tasks"][2]["title"]}}: {{data["tasks"][2]["description"]}}</li>
-  </ul>
+	<li>{{ data["tasks"][2]["title"]}}: {{data["tasks"][2]["description"]}}</li>
+  </ul> -->
+  <button (click) = "onButtonClick()" class="btn btn-danger">Click Me!</button>
+  <button (click)="onButtonClickParam(5)" class="btn btn-warning">Click me 5!</button>
+  <button (click)="onButtonClickEvent($event)" class="btn btn-primary">Click me Event!</button>
 </body>
 </html>

@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
 	public data : any = {};
 	public overgrowthdata : any = {};
-
+	public taskdata : any = {};
 	private _http : HttpService;
 	
 	constructor( httpService : HttpService){
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 	ngOnInit(){
 		// this.displayBulbasaur();
 		// this.displayOvergrowth();
-		this.displayTasks();
+		// this.displayTasks();
 	}
 
 	displayBulbasaur(){
@@ -45,4 +45,30 @@ export class AppComponent implements OnInit {
 			console.log("Task data", res)
 		});
 	}
+
+	onButtonClick() : any{
+		console.log("the button is clicked");
+		this.displayTasks();
+	}
+
+	onButtonClickParam(num: Number): void { 
+   		console.log(`Click event is working with num param: ${num}`);
+	    // call the service's method to post the data, but make sure the data is bundled up in an object!copy
+	    let observable = this._http.postToServer({data: num});
+	    observable.subscribe(data => console.log("Got our data!", data));
+	}
+
+	onButtonClickEvent(event: any): void { 
+	    console.log(`Click event is working with event: ${event}`);
+	}
+
+	onButtonClickTask(_id: String): void{
+		console.log(_id);
+		let oneTaskObservable : Observable<any> = this._http.getOne(_id);
+		oneTaskObservable.subscribe(res => {
+			console.log(res)
+			this.taskdata = res
+		});
+	}
+
 }

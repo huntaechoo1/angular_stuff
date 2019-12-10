@@ -28,7 +28,8 @@ export class HttpService {
 	getPokemon(){
 		return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
 		// bulbasaur.subscribe(data => console.log("Bulbasaur Data", data));
-		// bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are ${data["abilities"][0]["ability"]["name"]} and ${data["abilities"][1]["ability"]["name"]}`));
+		// bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are 
+		// ${data["abilities"][0]["ability"]["name"]} and ${data["abilities"][1]["ability"]["name"]}`));
 		// bulbasaur.subscribe(data => console.log(data["abilities"][0]["ability"]["url"]))		
 	}
 
@@ -38,6 +39,14 @@ export class HttpService {
 
 	getTasks(){
 		return this._http.get('http://localhost:8000/tasks');
+	}
+
+	postToServer(num){
+		return this._http.post('/create', num);
+	}
+
+	getOne(_id){
+		return this._http.get(`/tasks/${_id}`);
 	}
 
 }
