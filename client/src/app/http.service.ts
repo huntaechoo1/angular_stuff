@@ -6,28 +6,36 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
+	private _http : HttpClient;
 
-	constructor(private _http: HttpClient) {
-  		this.getTasks();
-  		this.getOneTask();
-  		this.getPokemon();
+	constructor(httpclient : HttpClient) {
+		this._http = httpclient;
+  		// this.getTasks();
+  		// this.getOneTask();
+  		// this.getPokemon();
 	}
 
-	getTasks(){
-		let tempObservable = this._http.get('/tasks');
-		tempObservable.subscribe(data => console.log("Got our tasks", data));
-	}
+	// getTasks(){
+	// 	let tempObservable = this._http.get('/tasks');
+	// 	tempObservable.subscribe(data => console.log("Got our tasks", data));
+	// }
 
-	getOneTask(){
-		let tempObservable = this._http.get('/tasks/5deaa36329d9bc41a41d9d21');
-		tempObservable.subscribe(data => console.log("Got our task", data));
-	}
+	// getOneTask(){
+	// 	let tempObservable = this._http.get('/tasks/5deaa36329d9bc41a41d9d21');
+	// 	tempObservable.subscribe(data => console.log("Got our task", data));
+	// }
 
 	getPokemon(){
 		let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-		bulbasaur.subscribe(data => console.log("Bulbasaur Data", data));
-		bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are ${data["abilities"][0]["ability"]["name"]} 
-			and ${data["abilities"][1]["ability"]["name"]}`));
+		// bulbasaur.subscribe(data => console.log("Bulbasaur Data", data));
+		// bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are ${data["abilities"][0]["ability"]["name"]} and ${data["abilities"][1]["ability"]["name"]}`));
+		// bulbasaur.subscribe(data => console.log(data["abilities"][0]["ability"]["url"]))
+		return bulbasaur;		
+	}
+
+	getBulbasaurAbility(){
+		let overgrowth = this._http.get('https://pokeapi.co/api/v2/ability/34/');
+		return overgrowth;
 	}
 
 }

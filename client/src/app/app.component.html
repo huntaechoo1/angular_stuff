@@ -4,8 +4,10 @@
   <title></title>
 </head>
 <body>
-  <h1>Tasks are cool</h1>
-  <h2>Welcome to {{title}}</h2>
-  <h3>Does this work? {{title2}}</h3>
+  <h1>Welcome to {{title}}</h1>
+  <h3>Bulbasaur's abilities are: {{data.abilities[0]["ability"]["name"] | json}} and {{data.abilities[1]["ability"]["name"] | json}}</h3>
+  <h3>Pokemon with Overgrowth are :</h3>
+  <h4 *ngFor = "let pokemon of overgrowthdata.pokemon">{{pokemon["pokemon"]["name"]}}</h4>
+  <h4>{{overgrowthdata.pokemon.length}} pokemon have Overgrowth</h4>
 </body>
 </html>
