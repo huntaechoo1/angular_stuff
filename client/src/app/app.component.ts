@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-	title = 'client';
+	title = 'Restful Tasks';
 
 	public data : any = {};
 	public overgrowthdata : any = {};
@@ -20,10 +20,29 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(){
+		// this.displayBulbasaur();
+		// this.displayOvergrowth();
+		this.displayTasks();
+	}
+
+	displayBulbasaur(){
 		let bulbasaurObservable : Observable<any> = this._http.getPokemon();
+		bulbasaurObservable.subscribe(res => {
+			this.data = res
+			console.log("bulbasaur data", res)
+		});
+	}
+
+	displayOvergrowth(){
 		let overgrowthObservable : Observable<any> = this._http.getBulbasaurAbility();
-		bulbasaurObservable.subscribe(res => this.data = res);
-		bulbasaurObservable.subscribe(res => console.log("bulbasaur data", res))
 		overgrowthObservable.subscribe(res => this.overgrowthdata = res);
+	}
+
+	displayTasks(){
+		let taskObservable : Observable<any> = this._http.getTasks();
+		taskObservable.subscribe(res => {
+			this.data = res
+			console.log("Task data", res)
+		});
 	}
 }

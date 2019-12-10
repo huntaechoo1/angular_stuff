@@ -26,16 +26,18 @@ export class HttpService {
 	// }
 
 	getPokemon(){
-		let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
+		return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
 		// bulbasaur.subscribe(data => console.log("Bulbasaur Data", data));
 		// bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are ${data["abilities"][0]["ability"]["name"]} and ${data["abilities"][1]["ability"]["name"]}`));
-		// bulbasaur.subscribe(data => console.log(data["abilities"][0]["ability"]["url"]))
-		return bulbasaur;		
+		// bulbasaur.subscribe(data => console.log(data["abilities"][0]["ability"]["url"]))		
 	}
 
 	getBulbasaurAbility(){
-		let overgrowth = this._http.get('https://pokeapi.co/api/v2/ability/34/');
-		return overgrowth;
+		return this._http.get('https://pokeapi.co/api/v2/ability/34/');
+	}
+
+	getTasks(){
+		return this._http.get('http://localhost:8000/tasks');
 	}
 
 }

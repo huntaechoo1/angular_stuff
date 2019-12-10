@@ -5,9 +5,17 @@
 </head>
 <body>
   <h1>Welcome to {{title}}</h1>
-  <h3>Bulbasaur's abilities are: {{data.abilities[0]["ability"]["name"] | json}} and {{data.abilities[1]["ability"]["name"] | json}}</h3>
-  <h3>Pokemon with Overgrowth are :</h3>
-  <h4 *ngFor = "let pokemon of overgrowthdata.pokemon">{{pokemon["pokemon"]["name"]}}</h4>
-  <h4>{{overgrowthdata.pokemon.length}} pokemon have Overgrowth</h4>
+  <!-- <h3>Bulbasaur's abilities are: {{data.abilities[0]["ability"]["name"] | json}} and {{data.abilities[1]["ability"]["name"] | json}}</h3> -->
+  <!-- <h3>Pokemon with Overgrowth are :</h3> -->
+  <!-- <h4 *ngFor = "let pokemon of overgrowthdata.pokemon">{{pokemon["pokemon"]["name"]}}</h4>
+  <h4>{{overgrowthdata.pokemon.length}} pokemon have Overgrowth</h4> -->
+  <h1>All Tasks</h1>
+  <ul>
+    <li *ngFor = "let task of data.tasks">{{ task["title"]}}: {{task["description"]}}</li>
+  </ul>
+  <h1>The Third Task</h1>
+  <ul>
+    <li>{{ data["tasks"][2]["title"]}}: {{data["tasks"][2]["description"]}}</li>
+  </ul>
 </body>
 </html>
