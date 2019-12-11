@@ -5,6 +5,6 @@ module.exports = function(app) {
     app.get("/tasks", Task.getAll);
     app.post("/create", Task.create);
     app.get("/tasks/:_id", Task.getOne);
-    app.post("/tasks/edit/:_id", Task.update);
-    app.get("/tasks/delete/:_id", Task.delete);
+    app.put("/tasks/:_id", Task.update);
+    app.delete("/tasks/:_id", Task.delete);
 }

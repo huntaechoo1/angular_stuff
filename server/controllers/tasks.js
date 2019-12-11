@@ -26,10 +26,20 @@ class TaskController{
 	}
 
 	update(req, res){
+		console.log(req.body);
 		let _id = req.params._id;
-		Task.findByIdAndUpdate({_id}, req.body, {runValidators: true})
+		console.log(_id);
+		Task.findByIdAndUpdate({_id}, req.body.task, {runValidators: true, useFindAndModify: false})
 			.then(() => res.json({"msg": "Yes, Master"}))
 			.catch(err => res.json(err));
+		// Task.findOne({_id})
+		// 	.then( task => {
+		// 		task.title = req.body.title;
+		// 		task.save()
+		// 			.then(() => res.json({"msg":"Yes, Master"}))
+		// 			.catch(err => res.json(err));
+		// 	})
+		// 	.catch(err => res.json(err));
 	}
 
 	delete(req, res){

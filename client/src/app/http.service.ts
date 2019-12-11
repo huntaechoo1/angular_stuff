@@ -10,32 +10,14 @@ export class HttpService {
 
 	constructor(httpclient : HttpClient) {
 		this._http = httpclient;
-  		// this.getTasks();
-  		// this.getOneTask();
-  		// this.getPokemon();
 	}
-
-	// getTasks(){
-	// 	let tempObservable = this._http.get('/tasks');
-	// 	tempObservable.subscribe(data => console.log("Got our tasks", data));
+	// getPokemon(){
+	// 	return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
 	// }
 
-	// getOneTask(){
-	// 	let tempObservable = this._http.get('/tasks/5deaa36329d9bc41a41d9d21');
-	// 	tempObservable.subscribe(data => console.log("Got our task", data));
+	// getBulbasaurAbility(){
+	// 	return this._http.get('https://pokeapi.co/api/v2/ability/34/');
 	// }
-
-	getPokemon(){
-		return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-		// bulbasaur.subscribe(data => console.log("Bulbasaur Data", data));
-		// bulbasaur.subscribe(data => console.log(`Bulbasaur's skills are 
-		// ${data["abilities"][0]["ability"]["name"]} and ${data["abilities"][1]["ability"]["name"]}`));
-		// bulbasaur.subscribe(data => console.log(data["abilities"][0]["ability"]["url"]))		
-	}
-
-	getBulbasaurAbility(){
-		return this._http.get('https://pokeapi.co/api/v2/ability/34/');
-	}
 
 	getTasks(){
 		return this._http.get('http://localhost:8000/tasks');
@@ -47,6 +29,18 @@ export class HttpService {
 
 	getOne(_id){
 		return this._http.get(`/tasks/${_id}`);
+	}
+
+	create(taskData : any) : Observable<any>{
+		return this._http.post('/create', taskData);
+	}
+
+	update(_id, taskData){
+		return this._http.put(`/tasks/${_id}`, taskData);
+	}
+
+	delete(_id){
+		return this._http.delete(`/tasks/${_id}`);
 	}
 
 }
